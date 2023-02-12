@@ -40,14 +40,14 @@
 ### SCREENSHOTS :
 
 <p align="center">
-  <img width = 1000 src="images/1.jpg" /><br>
-  <img width = 1000 src="images/2.jpg" /><br>
+  <img width = 1000 src="images/1.jpeg" /><br>
+  <img width = 1000 src="images/2.jpeg" /><br>
 </p>
 
 ****
 
 ### Name : 
 - Gaurav Kulkarni
-- Janhvi Komurlakar
-- Arpita 
-- Nabodita 
+- Janhavi Komurlekar
+- Arpita Saxena
+- Nabodita Choudhury
