@@ -18,6 +18,10 @@ import pandas as pd
 from matplotlib import patches
 from tkinter.messagebox import *
 import time
+
+def destroy_widget(widget):
+    widget.destroy()
+
 image1=''
 main = Tk()
 dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -40,27 +44,32 @@ num1.grid(column= 1, row = 4)
 num2 = Entry(main)
 num2.grid(column= 1, row = 6)
 
+if(num2 != num1):
+    label=Label(main, text = "Key didnt match !! Try Again")
+    label.grid(column= 0, row = 5)
+    # run clear_label after 2000ms (2s)
+    main.after(5000,destroy_widget, label)
+
+
 def button_pressed():
     # put text
     label=Label(main, text = "Encryption Done!")
     label.grid(column= 0, row = 5)
     # run clear_label after 2000ms (2s)
-    main.after(2000,destroy_widget, label)
+    main.after(5000,destroy_widget, label)
 
 def button_pressed1():
     # put text
     label=Label(main, text = "Decryption Done!")
     label.grid(column= 0, row = 7)
     # run clear_label after 2000ms (2s)
-    main.after(2000,destroy_widget, label)
+    main.after(5000,destroy_widget, label)
 
 def button_pressed2():
     label=Label(main, text = "Loading...")
     label.grid(column= 0, row = 8)
     main.after(32000,destroy_widget, label)
 
-def destroy_widget(widget):
-    widget.destroy()
 
 def fileDialog():
     main.filename = filedialog.askopenfilename(initialdir =  "/", title = "Select A File", filetype =
@@ -69,7 +78,7 @@ def fileDialog():
 
     #main.label.configure(text = main.filename)
     img = Image.open(main.filename)
-    file="imagepath.csv"
+    file="original_image.csv"
     with open(file, 'w') as csvfile:
         # creating a csv writer object
         csvwriter = csv.writer(csvfile)
@@ -80,7 +89,7 @@ def fileDialog():
 def encryption():
 
     image1=""
-    file="imagepath.csv"
+    file="original_image.csv"
     with open(file, 'r',) as file:
         reader = csv.reader(file, delimiter = '\t')
         for row in reader:
@@ -92,15 +101,18 @@ def encryption():
     # matrice to 2D matrice.
     from PIL import Image
     im = Image.open(image1)
-    im.save('Foto.png')
-    image = mpimg.imread('Foto.png')
+    im.save('original_image.png')
+    image = mpimg.imread('original_image.png')
     imageshape=np.asarray(image.shape)
     np.savetxt("shape1.csv", imageshape, delimiter=",",fmt='%.3e')
     x = image.reshape(image.shape[0], -1)
     Ans = int(num1.get())
     x=x*Ans
+    # encrypted_show()
 
-    np.savetxt("shape.csv", x)
+    np.savetxt("open_for_decryption.csv", x)
+    # File to be opened
+    
     # saving reshaped array to file.
 
     command = button_pressed()
@@ -128,15 +140,16 @@ def decryption():
     fig.add_axes(ax)
     ax.imshow(image2, interpolation='nearest')
     ax.set(xlim=[-0.5, width - 0.5], ylim=[height - 0.5, -0.5], aspect=1)
-    fig.savefig("foo.jpg", dpi=dpi,transparent=True)
-    os.remove("shape.csv")
+    fig.savefig("decrypted_image.png", dpi=dpi,transparent=True)
+    os.remove("open_for_decryption.csv")
     os.remove("shape1.csv")
+    os.remove("original_image.csv")
     command = button_pressed1()
 
 
 def original():
     image1=""
-    file="imagepath.csv"
+    file="original_image.csv"
     with open(file, 'r',) as file:
         reader = csv.reader(file, delimiter = '\t')
         for row in reader:
@@ -183,9 +196,6 @@ showoriginal()
 encrypt()
 decrypt()
 
-
-
-# This defines the Python GUI backend to use for matplotlib
 matplotlib.use('TkAgg')
 
 
