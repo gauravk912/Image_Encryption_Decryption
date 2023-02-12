@@ -21,18 +21,18 @@
 ****
 
 ### HOW TO Use it :
-- User just need to download the file, and run the image_encryption_decryption.py, on local system.
-- After running a GUI window appears, where user needs to choose an image file using CHOOSE button on the top right corner.
-- After selecting the image, two images will appear on screen one on left side, which is original and one on write in which Encrypted Decrypted format will be shown.
-- Now user can start encryption and decryption using Encrypt and Decrypt button.
-- Also there is exit button, clicking on which we get a exit dialog box asking the permission to exit.
+- User just need to download the file, and run the encrypt.py for encryption on local system.
+- After running a GUI window appears, where user needs to choose an image file .
+- After selecting the image, the image will be encrypted and a key will be generated.
+- Now user can use the same key for decryption of the image by using decrypt.py file.
+- The image thus gets decrypted.
 
 ### Purpose :
 - This scripts helps us to easily encrypt any image for security purpose and can even decrypt also.
 
 ### Compilation Steps :
 - Install tkinter, PIL, numpy, cv2, os, random
-- After that download the code file, and run image_encryption_decryption.py on local system.
+- After that download the code file, and run encrypt.py, followed by decrypt.py on local system.
 - Then the script will start running and user can explore it by encrypting and decrypting any image and saving it.
 
 ****
