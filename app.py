@@ -198,5 +198,4 @@ decrypt()
 
 matplotlib.use('TkAgg')
 
-
 mainloop()
