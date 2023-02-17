@@ -4,17 +4,17 @@ import tkinter as tk
 from tkinter import filedialog
 print ('-- Image Encryption and Decryption --')
 print ('*************************************')
-file1 = filedialog.askopenfile(mode='r', filetype=[('jpg file', '*.jpg')])
+file1 = filedialog.askopenfile(mode='r', filetype=[('jpeg file', '*.jpeg')])
 file_name = file1.name
 img=Image.open(file_name)
 #img.show()
 arr=numpy.asarray(img)
 arr1=arr.copy()
 x,y,z=arr.shape
-n=y-(random.randint(y//40,y//20))
-n1=x-(random.randint(x//40,x//20))
-m,m1=random.randint(1,1000),random.randint(1,1000)
-b,c=random.randint(1,1000),random.randint(1,1000)
+n=y-(random.randint(y//4,y//2))
+n1=x-(random.randint(x//4,x//2))
+m,m1=random.randint(1,10),random.randint(1,10)
+b,c=random.randint(1,10),random.randint(1,10)
 it=random.randint(50,200)
 def flip():
     global x,b,n1
